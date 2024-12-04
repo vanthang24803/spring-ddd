@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  mariadb:
+    image: mariadb:latest
+    container_name: spring-maria
+    environment:
+      MARIADB_ROOT_PASSWORD: Thang@240803
+      MARIADB_DATABASE: maria
+    ports:
+      - "3306:3306"
+    volumes:
+      - mariadb_data:/var/lib/mysql
+
+volumes:
+  mariadb_data:
+    driver: local
