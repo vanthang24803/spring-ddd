@@ -1,8 +1,9 @@
 package com.app.services.authentication;
 
 
-import java.util.Map;
+import com.app.common.NormalResponse;
+
 
 public interface IAuthenticationService {
-    Map<String, String> getHelloWorld();
+    NormalResponse<String> getHelloWorld();
 }

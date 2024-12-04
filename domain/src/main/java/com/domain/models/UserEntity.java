@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Set;
+
 
 @EqualsAndHashCode(callSuper = true)
 @Entity
@@ -25,4 +27,12 @@ public class UserEntity extends BaseEntity {
 
     @Column(name = "verify_email", nullable = false)
     private Boolean verify = false;
+
+    @ManyToMany
+    @JoinTable(
+            name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<RoleEntity> roles;
 }
