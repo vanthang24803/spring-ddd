@@ -1,5 +1,7 @@
 server:
   port: 8000
+  servlet:
+    context-path: /api/v1
 
 spring:
   datasource:
@@ -14,3 +16,6 @@ spring:
     properties:
       hibernate:
         format_sql: true
+  main:
+    allow-bean-definition-overriding: true
+

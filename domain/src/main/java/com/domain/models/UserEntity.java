@@ -2,8 +2,7 @@ package com.domain.models;
 
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 
 import java.util.Set;
 
@@ -12,6 +11,9 @@ import java.util.Set;
 @Entity
 @Table(name = "users")
 @Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class UserEntity extends BaseEntity {
     @Column(name = "first_name", nullable = false, length = 255)
     private String firstName;
