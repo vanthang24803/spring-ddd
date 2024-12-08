@@ -18,8 +18,7 @@ public class ApplicationConfig implements WebMvcConfigurer {
     @Bean
     public WebServerFactoryCustomizer<ConfigurableServletWebServerFactory> containerCustomizer() {
         return factory -> {
-            factory.setPort(8000);
-            factory.setContextPath("/api/v1");
+
         };
     }
 
