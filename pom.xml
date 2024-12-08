@@ -12,8 +12,8 @@
         <module>api</module>
         <module>application</module>
         <module>domain</module>
-        <module>infrastructure</module>
         <module>application</module>
+        <module>infrastructure</module>
     </modules>
 
 
@@ -39,11 +39,7 @@
                 <version>1.18.30</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-log4j2</artifactId>
-                <version>3.3.2</version>
-            </dependency>
+
         </dependencies>
     </dependencyManagement>
 </project>

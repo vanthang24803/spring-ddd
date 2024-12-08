@@ -1,4 +1,4 @@
-package com.app.common;
+package com.infrastructure.common;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
@@ -21,3 +21,4 @@ public class NormalResponse<T> {
     @Builder.Default
     private LocalDateTime timestamp = LocalDateTime.now();
 }
+

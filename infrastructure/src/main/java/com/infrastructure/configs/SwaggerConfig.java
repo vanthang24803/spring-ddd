@@ -1,4 +1,4 @@
-package com.api.configs;
+package com.infrastructure.configs;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.models.OpenAPI;

@@ -1,4 +1,4 @@
-package com.app.common;
+package com.infrastructure.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

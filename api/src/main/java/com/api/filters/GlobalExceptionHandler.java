@@ -1,7 +1,7 @@
 package com.api.filters;
 
-import com.app.common.ApiError;
-import com.app.exceptions.*;
+import com.infrastructure.common.ApiError;
+import com.infrastructure.exceptions.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;

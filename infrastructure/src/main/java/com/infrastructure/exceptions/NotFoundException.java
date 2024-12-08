@@ -1,7 +1,7 @@
-package com.app.exceptions;
+package com.infrastructure.exceptions;
 
 
-import com.app.common.ApiError;
+import com.infrastructure.common.ApiError;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
