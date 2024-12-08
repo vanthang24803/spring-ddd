@@ -22,23 +22,23 @@ public class UserEntity extends BaseEntity {
     @Column(name = "last_name", nullable = false)
     private String lastName;
 
-    @Column(name = "email", nullable = false , unique = true)
+    @Column(name = "email", nullable = false, unique = true)
     private String email;
 
-    @Column(name = "password", columnDefinition = "TEXT", nullable = false)
+    @Column(name = "gender", nullable = false)
+    private boolean gender;
+
+    @Column(name = "password", columnDefinition = "TEXT")
     private String password;
 
-    @Column(name = "verify_email", nullable = false)
-    private Boolean verify = false;
+    @Column(name = "avatar", columnDefinition = "TEXT")
+    private String avatar;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany
     @JoinTable(
             name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Set<RoleEntity> roles = new HashSet<>();
-
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<TokenEntity> tokens = new ArrayList<>();
 }
