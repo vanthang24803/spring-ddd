@@ -14,7 +14,7 @@ import java.util.Set;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Role extends BaseEntity {
+public class RoleEntity extends BaseEntity {
     @Enumerated(EnumType.STRING)
     @Column(length = 20, unique = true)
     private RoleName name;
@@ -25,6 +25,6 @@ public class Role extends BaseEntity {
     @Column(name = "is_active")
     private Boolean isActive = true;
 
-    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<UserRole> userRoles = new HashSet<>();
+    @OneToMany(mappedBy = "roleEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<UserRoleEntity> userRoleEntities = new HashSet<>();
 }

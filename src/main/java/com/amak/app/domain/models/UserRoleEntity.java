@@ -9,28 +9,28 @@ import java.time.Instant;
 
 @Entity
 @Table(name = "user_roles")
-@IdClass(UserRoleId.class)
+@IdClass(UserRole.class)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class UserRole {
+public class UserRoleEntity {
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    private UserEntity userEntity;
 
     @Id
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "role_id", nullable = false)
-    private Role role;
+    private RoleEntity roleEntity;
 
     @Column(name = "assigned_at", nullable = false)
     private Instant assignedAt = Instant.now();
 
-    public  UserRole(User user, Role role) {
-        this.role = role;
-        this.user = user;
+    public UserRoleEntity(UserEntity userEntity, RoleEntity roleEntity) {
+        this.roleEntity = roleEntity;
+        this.userEntity = userEntity;
         this.assignedAt = Instant.now();
     }
 }
@@ -38,7 +38,7 @@ public class UserRole {
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-class UserRoleId implements Serializable {
-    private Long user;
-    private Long role;
+class UserRole implements Serializable {
+    private Long userEntity;
+    private Long roleEntity;
 }

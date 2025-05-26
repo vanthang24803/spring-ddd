@@ -23,7 +23,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuperBuilder
-public class User extends BaseEntity {
+public class UserEntity extends BaseEntity {
 
     @NotBlank
     @Size(min = 3, max = 50)
@@ -80,6 +80,9 @@ public class User extends BaseEntity {
     @Builder.Default
     private Locale locale = Locale.US;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<UserRole> userRoles = new HashSet<>();
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private Set<UserRoleEntity> userRoleEntities = new HashSet<>();
+
+    @OneToMany(mappedBy = "userEntity", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<TokenEntity> tokens = new HashSet<>();
 }

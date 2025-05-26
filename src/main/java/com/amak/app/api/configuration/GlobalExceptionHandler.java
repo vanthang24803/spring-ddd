@@ -7,11 +7,14 @@ import jakarta.validation.ConstraintViolationException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -88,12 +91,25 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
     }
 
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<Response> handleHttpMessageNotReadable(HttpMessageNotReadableException ex) {
+        Response res = responseBuilder.buildError(
+                HttpStatus.BAD_REQUEST.value(),
+                ex.getMessage()
+        );
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
+    }
+
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Response> handleGeneralException(Exception e) {
+    public ResponseEntity<Response> handleGeneralException(Exception e) throws Exception {
+        if (e instanceof AccessDeniedException || e instanceof AuthenticationException) {
+            throw e;
+        }
         Response res = responseBuilder.buildError(
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
-                HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase()
+                e.getMessage()
         );
         return ResponseEntity.internalServerError().body(res);
     }
+
 }

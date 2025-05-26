@@ -1,4 +1,4 @@
-package com.amak.app.application.dto;
+package com.amak.app.application.dto.auth;
 
 
 import jakarta.validation.constraints.Email;
